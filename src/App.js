@@ -1,25 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import AddQuote from "./pages/AddQuote";
+import BookDetail from "./pages/BookDetail";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Home from "./pages/Home";
+import MyPage from "./pages/MyPage";
+import NotFound from "./pages/NotFound";
+import Search from "./pages/Search";
+
+// 라우터 생성
+const router = createBrowserRouter([
+  { path: "/", element: <Home /> },
+  { path: "quotes/add", element: <AddQuote /> },
+  { path: "myPage", element: <MyPage /> },
+  { path: "books", element: <Search /> },
+  { path: "books/:id", element: <BookDetail /> },
+  { path: "*", element: <NotFound /> },
+]);
+
+export default function App() {
+  return <RouterProvider router={router} />;
 }
-
-export default App;
