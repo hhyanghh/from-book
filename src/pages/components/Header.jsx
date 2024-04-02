@@ -7,20 +7,20 @@ const Header = () => {
     console.log("Login >>>");
   };
   return (
-    <header>
-      <nav>
-        <ul>
-          <li>Logo</li>
-          <li>
+    <div className="border-b border-primary bg-secondary">
+      <header className="p-4 max-w-screen-xl mx-auto">
+        <nav className="flex justify-between font-semibold text-primary items-center">
+          <Link to="/">
+            <img src="./logo.png" className="w-24" alt="logo" />
+          </Link>
+          <div className="flex gap-4">
             <Link to="/about">About</Link>
-          </li>
-          <li>
             <Link to="/books">Books</Link>
-          </li>
+          </div>
           <Button text="로그인" type="button" onClick={handleClick} />
-        </ul>
-      </nav>
-    </header>
+        </nav>
+      </header>
+    </div>
   );
 };
 
