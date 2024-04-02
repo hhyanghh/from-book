@@ -1,5 +1,6 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import About from "./pages/About";
 import AddQuote from "./pages/AddQuote";
 import BookDetail from "./pages/BookDetail";
 
@@ -14,6 +15,7 @@ const router = createBrowserRouter([
   { path: "quotes/add", element: <AddQuote /> },
   { path: "myPage", element: <MyPage /> },
   { path: "books", element: <Search /> },
+  { path: "about", element: <About /> },
   { path: "books/:id", element: <BookDetail /> },
   { path: "*", element: <NotFound /> },
 ]);
