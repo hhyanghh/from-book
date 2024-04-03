@@ -1,6 +1,11 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+import {
+  getAuth,
+  signInWithPopup,
+  GoogleAuthProvider,
+  onAuthStateChanged,
+} from "firebase/auth";
 
 import { getDatabase, ref, set, get } from "firebase/database";
 
@@ -27,4 +32,14 @@ export async function login() {
     console.error(error);
     throw error;
   }
+}
+
+export function onUserStateChange(callback) {
+  return onAuthStateChanged(auth, async (user) => {
+    if (user) {
+      callback(user);
+    } else {
+      callback(null);
+    }
+  });
 }

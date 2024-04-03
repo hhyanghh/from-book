@@ -1,11 +1,20 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Button from "./UI/Button";
-import { login } from "../../api/firebase";
+import { login, onUserStateChange } from "../../api/firebase";
 import UserProfile from "./UserProfile";
 
 const Header = () => {
   const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const unsubscribe = onUserStateChange((userData) => {
+      setUser(userData);
+    });
+
+    // 컴포넌트 언마운트 시 구독 해제
+    return () => unsubscribe();
+  }, []);
 
   const handleLogin = async () => {
     try {
