@@ -5,6 +5,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   onAuthStateChanged,
+  signOut,
 } from "firebase/auth";
 
 import { getDatabase, ref, set, get } from "firebase/database";
@@ -42,4 +43,13 @@ export function onUserStateChange(callback) {
       callback(null);
     }
   });
+}
+
+export async function logout() {
+  try {
+    await signOut(auth);
+  } catch (error) {
+    console.error("Logout error:", error);
+    throw error;
+  }
 }
