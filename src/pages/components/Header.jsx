@@ -26,8 +26,8 @@ const Header = () => {
     }
   };
   return (
-    <div className="border-b border-primary bg-secondary">
-      <header className="p-4 max-w-screen-xl mx-auto">
+    <div className="fixed left-0 right-0 border-b border-primary bg-secondary">
+      <header className="h-16 max-w-screen-xl mx-auto content-center px-4">
         <nav className="flex justify-between font-semibold text-primary items-center">
           <Link to="/">
             <img src="./logo.png" className="w-24" alt="logo" />
