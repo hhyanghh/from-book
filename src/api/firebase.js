@@ -8,7 +8,7 @@ import {
   signOut,
 } from "firebase/auth";
 
-import { getDatabase, ref, set, get } from "firebase/database";
+import { getDatabase, ref, set, get, push } from "firebase/database";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
@@ -52,4 +52,9 @@ export async function logout() {
     console.error("Logout error:", error);
     throw error;
   }
+}
+
+export function addQuote(quoteData) {
+  const quotesRef = ref(database, "quotes");
+  return push(quotesRef, quoteData);
 }
