@@ -4,7 +4,7 @@ const fetchBooks = async (query) => {
   const clientId = process.env.REACT_APP_NAVER_CLIENT_ID;
   const clientSecret = process.env.REACT_APP_NAVER_CLIENT_SECRET;
 
-  const url = "/v1/search/book.json";
+  const url = `/v1/search/book.json?query=${query}`;
   const headers = {
     "X-Naver-Client-Id": clientId,
     "X-Naver-Client-Secret": clientSecret,
