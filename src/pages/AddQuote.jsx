@@ -1,15 +1,21 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { addQuote } from "../api/firebase";
+import { useUser } from "../context/UserContext";
 import Button from "./components/UI/Button";
 
 export default function AddQuote() {
-  const [writer, setWriter] = useState("");
+  const { user } = useUser();
+  const [writer, setWriter] = useState(user ? user.displayName : "");
   const [quote, setQuote] = useState("");
   const [source, setSource] = useState("");
   // Input field common classes
   const inputClasses =
     "shadow appearance-none rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline";
-
+  useEffect(() => {
+    if (user) {
+      setWriter(user.displayName);
+    }
+  }, [user]);
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -21,7 +27,7 @@ export default function AddQuote() {
 
     try {
       await addQuote(quoteData);
-      setWriter("");
+      setWriter(user ? user.displayName : "");
       setQuote("");
       setSource("");
       alert("Quote saved successfully!");
