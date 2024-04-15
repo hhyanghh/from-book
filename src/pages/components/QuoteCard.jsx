@@ -1,7 +1,12 @@
 import React from "react";
 import { FiHeart, FiPlusCircle } from "react-icons/fi";
+import { useNavigate } from "react-router-dom";
 
 const QuoteCard = ({ quote, source }) => {
+  const navigate = useNavigate();
+  const handlePlusClick = () => {
+    navigate("/quotes/add");
+  };
   return (
     <div className="max-w-xs mx-auto my-8 p-8 bg-white rounded-lg shadow-lg flex flex-col justify-between h-full">
       <div className="text-center">
@@ -12,7 +17,11 @@ const QuoteCard = ({ quote, source }) => {
         <button type="button" className=" hover:text-primary">
           <FiHeart size="24" />
         </button>
-        <button type="button" className=" hover:text-primary">
+        <button
+          type="button"
+          className=" hover:text-primary"
+          onClick={handlePlusClick}
+        >
           <FiPlusCircle size="24" />
         </button>
       </div>
