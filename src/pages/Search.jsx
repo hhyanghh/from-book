@@ -25,13 +25,13 @@ export default function Search() {
     return `${text.substring(0, maxLength)}...`;
   };
 
-  const handleCardClick = (isbn) => {
-    navigate(`/books/${isbn}`);
+  const handleCardClick = (book) => {
+    navigate(`/books/${book.isbn}`, { state: { book } });
   };
 
   return (
     <div className="max-w-4xl mx-auto p-8">
-      <div className="flex mb-8 gap-4 w-1/2 mx-auto">
+      <div className="flex mb-8 gap-4 w-full lg:w-1/2 mx-auto">
         <input
           type="text"
           value={query}
@@ -48,7 +48,7 @@ export default function Search() {
           <div
             key={index}
             className="bg-white p-4 rounded-lg shadow flex flex-col items-center text-center h-full"
-            onClick={() => handleCardClick(book.isbn)}
+            onClick={() => handleCardClick(book)}
           >
             <img
               src={book.image}
