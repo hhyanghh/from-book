@@ -1,10 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import fetchBooks from "../hooks/fetchBooks";
 import Button from "./components/UI/Button";
 
 export default function Search() {
   const [query, setQuery] = useState("");
   const [books, setBooks] = useState([]);
+  const navigate = useNavigate();
 
   const handleSearch = async () => {
     try {
@@ -21,6 +23,10 @@ export default function Search() {
       return text;
     }
     return `${text.substring(0, maxLength)}...`;
+  };
+
+  const handleCardClick = (isbn) => {
+    navigate(`/books/${isbn}`);
   };
 
   return (
@@ -42,6 +48,7 @@ export default function Search() {
           <div
             key={index}
             className="bg-white p-4 rounded-lg shadow flex flex-col items-center text-center h-full"
+            onClick={() => handleCardClick(book.isbn)}
           >
             <img
               src={book.image}

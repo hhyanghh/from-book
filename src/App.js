@@ -21,7 +21,7 @@ const router = createBrowserRouter([
       { path: "myPage", element: <MyPage /> },
       { path: "books", element: <Search /> },
       { path: "about", element: <About /> },
-      { path: "books/:id", element: <BookDetail /> },
+      { path: "/books/:isbn", element: <BookDetail /> },
     ],
   },
   { path: "*", element: <NotFound /> },
