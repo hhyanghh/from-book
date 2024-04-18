@@ -43,25 +43,31 @@ export default function Search() {
         <Button text="검색" onClick={handleSearch} />
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-        {books.map((book, index) => (
-          <div
-            key={index}
-            className="bg-white p-4 rounded-lg shadow flex flex-col items-center text-center h-full"
-            onClick={() => handleCardClick(book)}
-          >
-            <img
-              src={book.image}
-              alt={book.title}
-              className="w-full h-64 object-contain"
-            />
-            <div className="mt-2">
-              <h3 className="font-bold">{truncateText(book.title, 18)}</h3>
-              <p>{book.author}</p>
+      {books.length > 0 ? (
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          {books.map((book, index) => (
+            <div
+              key={index}
+              className="bg-white p-4 rounded-lg shadow flex flex-col items-center text-center h-full"
+              onClick={() => handleCardClick(book)}
+            >
+              <img
+                src={book.image}
+                alt={book.title}
+                className="w-full h-64 object-contain"
+              />
+              <div className="mt-2">
+                <h3 className="font-bold">{truncateText(book.title, 18)}</h3>
+                <p>{book.author}</p>
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
+      ) : (
+        <div className="text-center text-lg text-gray-600 text-white">
+          검색 결과가 없습니다.
+        </div>
+      )}
     </div>
   );
 }
