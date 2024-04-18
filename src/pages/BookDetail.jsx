@@ -11,7 +11,8 @@ const BookDetail = () => {
 
   return (
     <div className="container mx-auto px-4 py-8 text-white">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <h1 className="text-2xl font-bold mb-4 text-center">{book.title}</h1>
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
         <div className="flex justify-center items-center">
           <img
             src={book.image}
@@ -20,10 +21,10 @@ const BookDetail = () => {
           />
         </div>
         <div>
-          <h1 className="text-2xl font-bold mb-4">{book.title}</h1>
-          <p className="text-lg mb-2">{book.author}</p>
-          <p className="text-lg mb-2">{book.isbn}</p>
-          <p className="text-lg mb-2">{book.description}</p>
+          <p className="text-lg mb-2">저자 : {book.author}</p>
+          <div className="text-lg mb-2 bg-primary text-black px-4 py-2 mt-4 rounded-lg">
+            <p>{book.description}</p>
+          </div>
           <a
             href={book.link}
             target="_blank"
