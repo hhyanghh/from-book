@@ -1,4 +1,3 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -57,4 +56,20 @@ export async function logout() {
 export function addQuote(quoteData) {
   const quotesRef = ref(database, "quotes");
   return push(quotesRef, quoteData);
+}
+
+export async function fetchQuotes() {
+  const quotesRef = ref(database, "quotes");
+  try {
+    const snapshot = await get(quotesRef);
+    if (snapshot.exists()) {
+      return snapshot.val();
+    } else {
+      console.log("No data available");
+      return [];
+    }
+  } catch (error) {
+    console.error("Fetch quotes error:", error);
+    throw error;
+  }
 }
