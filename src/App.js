@@ -1,5 +1,7 @@
 import React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { UserProvider } from "./context/UserContext";
 import About from "./pages/About";
 import AddQuote from "./pages/AddQuote";
@@ -31,6 +33,7 @@ export default function App() {
   return (
     <UserProvider>
       <RouterProvider router={router} />
+      <ToastContainer />
     </UserProvider>
   );
 }

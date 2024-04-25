@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { addQuote } from "../api/firebase";
 import { useUser } from "../context/UserContext";
 import Button from "./components/UI/Button";
+import { toast } from "react-toastify";
 
 export default function AddQuote() {
   const {
@@ -26,10 +27,26 @@ export default function AddQuote() {
     try {
       await addQuote(data);
       reset();
-      alert("Quote saved successfully!");
+      toast.success("성공적으로 저장되었습니다!", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     } catch (error) {
       console.error("Error adding quote:", error);
-      alert("Failed to save quote.");
+      toast.error("저장에 실패하였습니다.", {
+        position: "top-center",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+      });
     }
   };
   return (
